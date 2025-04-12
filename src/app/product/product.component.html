@@ -1,0 +1,12 @@
+<div class="card-container">
+    <div *ngFor="let p of products" class="card" style="width: 18rem;">
+      <img class="card-img-top" [src]="p.image" alt="{{p.title}}">
+      <div class="card-body">
+        <h5 class="card-title">{{p.title}}</h5>
+        <p class="card-text">Price: ${{p.price}}</p>
+        <p class="card-text">Quantity: {{p.quantity}}</p>
+        <p class="card-text">Likes: {{p.like}}</p>
+        <button class="btn btn-primary" (click)="increaseLikes(p)">Like</button>
+      </div>
+    </div>
+  </div>

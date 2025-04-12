@@ -1,0 +1,43 @@
+<h1>Add Product</h1>
+
+<form [formGroup]="formLogin">
+    <div class="form-group">
+        <label for="exampleInputEmail1">id</label>
+        <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter id" formControlName="id">
+        <p *ngIf="formLogin.get('id')?.errors?.['required']"> l'id est obligatoire</p>
+        <p *ngIf="formLogin.controls['id'].hasError('minLength')">l'id doit comporter seulement des nombres </p>
+    </div>
+
+
+    <div class="form-group">
+        <label for="exampleInputPassword1">title</label>
+        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="title" formControlName="title">
+    </div>
+    <div class="alert alert-danger" *ngIf="formLogin.controls['title'].invalid && formLogin.controls['title'].touched">
+        <p *ngIf="formLogin.get('title')?.errors?.['required']"> le titre est obligatoire</p>
+        <p *ngIf="formLogin.controls['title'].hasError('minlength')">titre minLength </p>
+    </div>
+
+    <div class="form-group">
+        <label for="exampleInputPassword1">price</label>
+        <input type="number" class="form-control" id="exampleInputPassword1" placeholder="price" formControlName="price">
+        <p *ngIf="formLogin.get('price')?.errors?.['required']"> le prix est obligatoire</p>
+    </div>
+
+    <div class="form-group">
+        <label for="exampleInputPassword1">quantity</label>
+        <input type="number" class="form-control" id="exampleInputPassword1" placeholder="quantity" formControlName="quantity">
+        <p *ngIf="formLogin.get('quantity')?.errors?.['required']">ajouter la quantité </p>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">like</label>
+        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="like" formControlName="like">
+        <p *ngIf="formLogin.get('like')?.errors?.['required']"> Veuillez entrer votre avis</p>
+    </div>
+    <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+    </div>
+    <button type="submit" class="btn btn-primary" (click)="add()" [disabled]="formLogin.invalid">Submit</button>
+
+</form>
